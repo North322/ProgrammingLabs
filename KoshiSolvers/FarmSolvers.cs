@@ -18,16 +18,9 @@ namespace KoshiSolvers
         }
 
         // Methods
-        public void AddSolver(SolverTypes solverType, BehaviorOfSolver behavior)
+        public void AddSolver(Solver solver)
         {
-            switch (solverType) {
-                case SolverTypes.EulerSolver:
-                    solvers.Add(new EulerSolver(behavior));
-                    break;
-                case SolverTypes.HoinSolver:
-                    solvers.Add(new HoinSolver(behavior));
-                    break;
-            }
+            solvers.Add(solver);
         }
 
         public List<Point> SolveProblem(int SolverIndex, TaskKoshi Task)
@@ -35,17 +28,18 @@ namespace KoshiSolvers
             return solvers[SolverIndex].SolveKoshiTask(Task);
         }
 
-        public bool DeleteSolver(string Name)
+        public void DeleteSolver(string Name)
         {
             foreach (Solver solver in Solvers)
             {
                 if (solver.Name == Name)
                 {
                     Solvers.Remove(solver);
-                    return true;
+                    return;
                 }
             }
-            return false;
+
+            throw new ArgumentException("There is no such solver");
         }
 
         public void CheckNameRepeat(string Name)
@@ -54,7 +48,7 @@ namespace KoshiSolvers
             {
                 if (solver.Name == Name)
                 {
-                    throw new ArgumentException("This name already exists");
+                    throw new ArgumentException("Solver with this name already exists");
                 }
             }
         }
