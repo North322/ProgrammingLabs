@@ -6,7 +6,7 @@ namespace KoshiSolvers
 {
     class HoinSolver : Solver
     {
-        public HoinSolver(BehaviorOfSolver _Behaviour) : base(_Behaviour) { }
+        public HoinSolver(string _Name, BehaviorOfSolver _Behaviour) : base(_Name, _Behaviour) { }
         
         public override List<Point> SolveKoshiTask(TaskKoshi Task)
         {

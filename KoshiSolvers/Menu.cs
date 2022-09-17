@@ -32,7 +32,10 @@ namespace KoshiSolvers
         
         // Think about data output. Method shoudn't print smth in Console
         // Probably should use streams instead of Console.WriteLine
-        private void handlePrintSolversOption() {}
+        private void handlePrintSolversOption() 
+        {
+
+        }
 
         private void handleSolveTaskOption(int solverIndex, TaskKoshi Task) {
             farm.Solvers[solverIndex].SolveKoshiTask(Task);

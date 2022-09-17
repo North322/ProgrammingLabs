@@ -6,24 +6,15 @@ namespace KoshiSolvers
     abstract class Solver
     {
         private string name;
-        private SolverTypes solverType;
         protected BehaviorOfSolver behavior;
         public abstract List<Point> SolveKoshiTask(TaskKoshi Task);
 
-        public Solver(BehaviorOfSolver _Behaviour) { behavior = _Behaviour; }
-
-        public SolverTypes SolverType
-        {
-            get { return solverType; }
-            set
-            {
-                if (!Enum.IsDefined(typeof(SolverTypes), value)) {
-                    throw new ArgumentException("There is no such solver type!");
-                }
-                solverType = value;
-            }
+        public Solver(string _Name, BehaviorOfSolver _Behaviour) 
+        { 
+            behavior = _Behaviour; 
+            name = _Name;
         }
-
+        
         public string Name
         {
             get { return Name; }
@@ -34,10 +25,16 @@ namespace KoshiSolvers
                 name = value;
             }
         }
+
         public BehaviorOfSolver Behavior
         {
             get { return behavior; }
-            set { behavior = value; }
+            set 
+            {
+                if (!Enum.IsDefined(typeof(BehaviorOfSolver), value))
+                    throw new ArgumentException("Unknown type for solver!");
+                behavior = value; 
+            }
         }
     }
 }

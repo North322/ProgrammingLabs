@@ -48,16 +48,15 @@ namespace KoshiSolvers
             return false;
         }
 
-        public bool CheckNameRepeat(string Name)
+        public void CheckNameRepeat(string Name)
         {
             foreach (Solver solver in Solvers)
             {
                 if (solver.Name == Name)
                 {
-                    return true;    
+                    throw new ArgumentException("This name already exists");
                 }
             }
-            return false;
         }
 
         public bool isArraySolversEmpty()

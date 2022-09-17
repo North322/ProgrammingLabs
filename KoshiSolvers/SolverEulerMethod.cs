@@ -6,7 +6,7 @@ namespace KoshiSolvers
 {
     class EulerSolver: Solver
     {
-        public EulerSolver(BehaviorOfSolver _Behaviour) : base(_Behaviour) { }
+        public EulerSolver(string _Name,BehaviorOfSolver _Behaviour) : base(_Name ,_Behaviour) { }
         
         public override List<Point> SolveKoshiTask(TaskKoshi Task)
         {
