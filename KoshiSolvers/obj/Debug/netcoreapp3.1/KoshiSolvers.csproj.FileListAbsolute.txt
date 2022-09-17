@@ -1,0 +1,14 @@
+/home/thenorth/KoshiSolvers/obj/Debug/netcoreapp3.1/KoshiSolvers.csproj.AssemblyReference.cache
+/home/thenorth/KoshiSolvers/obj/Debug/netcoreapp3.1/KoshiSolvers.GeneratedMSBuildEditorConfig.editorconfig
+/home/thenorth/KoshiSolvers/obj/Debug/netcoreapp3.1/KoshiSolvers.AssemblyInfoInputs.cache
+/home/thenorth/KoshiSolvers/obj/Debug/netcoreapp3.1/KoshiSolvers.AssemblyInfo.cs
+/home/thenorth/KoshiSolvers/obj/Debug/netcoreapp3.1/KoshiSolvers.csproj.CoreCompileInputs.cache
+/home/thenorth/KoshiSolvers/bin/Debug/netcoreapp3.1/KoshiSolvers
+/home/thenorth/KoshiSolvers/bin/Debug/netcoreapp3.1/KoshiSolvers.deps.json
+/home/thenorth/KoshiSolvers/bin/Debug/netcoreapp3.1/KoshiSolvers.runtimeconfig.json
+/home/thenorth/KoshiSolvers/bin/Debug/netcoreapp3.1/KoshiSolvers.runtimeconfig.dev.json
+/home/thenorth/KoshiSolvers/bin/Debug/netcoreapp3.1/KoshiSolvers.dll
+/home/thenorth/KoshiSolvers/bin/Debug/netcoreapp3.1/KoshiSolvers.pdb
+/home/thenorth/KoshiSolvers/obj/Debug/netcoreapp3.1/KoshiSolvers.dll
+/home/thenorth/KoshiSolvers/obj/Debug/netcoreapp3.1/KoshiSolvers.pdb
+/home/thenorth/KoshiSolvers/obj/Debug/netcoreapp3.1/KoshiSolvers.genruntimeconfig.cache
