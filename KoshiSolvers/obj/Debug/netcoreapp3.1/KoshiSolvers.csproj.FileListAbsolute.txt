@@ -12,3 +12,10 @@
 /home/thenorth/KoshiSolvers/obj/Debug/netcoreapp3.1/KoshiSolvers.dll
 /home/thenorth/KoshiSolvers/obj/Debug/netcoreapp3.1/KoshiSolvers.pdb
 /home/thenorth/KoshiSolvers/obj/Debug/netcoreapp3.1/KoshiSolvers.genruntimeconfig.cache
+C:\Users\.asind\Source\Repos\ProgrammingLabs1\KoshiSolvers\obj\Debug\netcoreapp3.1\KoshiSolvers.csproj.AssemblyReference.cache
+C:\Users\.asind\Source\Repos\ProgrammingLabs1\KoshiSolvers\obj\Debug\netcoreapp3.1\KoshiSolvers.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\.asind\Source\Repos\ProgrammingLabs1\KoshiSolvers\obj\Debug\netcoreapp3.1\KoshiSolvers.AssemblyInfoInputs.cache
+C:\Users\.asind\Source\Repos\ProgrammingLabs1\KoshiSolvers\obj\Debug\netcoreapp3.1\KoshiSolvers.AssemblyInfo.cs
+C:\Users\.asind\Source\Repos\ProgrammingLabs1\KoshiSolvers\obj\Debug\netcoreapp3.1\KoshiSolvers.csproj.CoreCompileInputs.cache
+C:\Users\.asind\Source\Repos\ProgrammingLabs1\KoshiSolvers\obj\Debug\netcoreapp3.1\KoshiSolvers.dll
+C:\Users\.asind\Source\Repos\ProgrammingLabs1\KoshiSolvers\obj\Debug\netcoreapp3.1\KoshiSolvers.pdb

@@ -1,0 +1,11 @@
+﻿  FarmSolvers.cpp
+  Solver.cpp
+  SolverEulerMethod.cpp
+  SolverMethodHoina.cpp
+  TaskKoshi.cpp
+  семак2Лаба4Наследование.cpp
+C:\Users\.asind\source\repos\ProgrammingLabs1\C_Plus_Plus_Projects--2-4.3\семак2Лаба4Наследование.cpp(76,36): warning C4244: =: преобразование "double" в "unsigned int", возможна потеря данных
+C:\Users\.asind\source\repos\ProgrammingLabs1\C_Plus_Plus_Projects--2-4.3\семак2Лаба4Наследование.cpp(274,37): warning C4244: =: преобразование "double" в "int", возможна потеря данных
+  Создание кода...
+C:\Users\.asind\source\repos\ProgrammingLabs1\C_Plus_Plus_Projects--2-4.3\FarmSolvers.cpp(56): warning C4715: FarmSolvers::GetResults: значение возвращается не при всех путях выполнения
+  семак2Лаба4Наследование.vcxproj -> C:\Users\.asind\Source\Repos\ProgrammingLabs1\KoshiSolvers\x64\Debug\семак2Лаба4Наследование.exe

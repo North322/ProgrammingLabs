@@ -1,12 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "4w5PPY/pWKOOZ2kLYisz9Kt/ZCVx5Heqa+LMn1jVvFwnU8g1dM5aGC9Cq6S1q7jKocTpQ1wdP7XeRoX4CdUXWQ==",
+  "dgSpecHash": "SIX2ywPWaZRnNA1O+0J0/XQKrY83zWXJJMbz0r5nQuLCLjCg9iKNCrorF7w+Zl5Zgqo8tstDlSQ1ORpJd1go6w==",
   "success": true,
-  "projectFilePath": "/home/thenorth/KoshiSolvers/KoshiSolvers.csproj",
-  "expectedPackageFiles": [
-    "/home/thenorth/.nuget/packages/microsoft.netcore.app.ref/3.1.0/microsoft.netcore.app.ref.3.1.0.nupkg.sha512",
-    "/home/thenorth/.nuget/packages/microsoft.aspnetcore.app.ref/3.1.10/microsoft.aspnetcore.app.ref.3.1.10.nupkg.sha512",
-    "/home/thenorth/.nuget/packages/microsoft.netcore.app.host.linux-x64/3.1.28/microsoft.netcore.app.host.linux-x64.3.1.28.nupkg.sha512"
-  ],
+  "projectFilePath": "C:\\Users\\.asind\\Source\\Repos\\ProgrammingLabs1\\KoshiSolvers\\KoshiSolvers.csproj",
+  "expectedPackageFiles": [],
   "logs": []
 }

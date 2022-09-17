@@ -1,5 +1,6 @@
 using System;
-enum Tasks { }
+
+internal enum Tasks { }
 namespace KoshiSolvers
 {
     class Menu

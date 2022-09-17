@@ -57,9 +57,9 @@ namespace KoshiSolvers
                     throw new ArgumentException("This name already exists");
                 }
             }
-        }
-
-        public bool isArraySolversEmpty()
+        } 
+        
+        public bool IsArraySolversEmpty()
         {
            if (Solvers.Count == 0) return true;
            return false;

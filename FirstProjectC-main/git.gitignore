@@ -1,0 +1,6 @@
+# ignore Debug 
+Debug/
+# ignore vs catalog
+vs/
+#ignore x64 catalog
+x64
