@@ -67,8 +67,11 @@ namespace KoshiSolvers
         }
 
         private void handleSolveTaskOption()
-        { 
-            farm.Solvers[solverIndex].SolveKoshiTask(Task);
+        {
+            Console.WriteLine("Enter solver name: ");
+            string Name = Console.ReadLine(); 
+              
+            farm.Solvers[farm.FindSolverByName(Name)].SolveKoshiTask(Task);
         }
     }
 }

@@ -10,8 +10,8 @@ namespace KoshiSolvers
         private List<Solver> solvers;
 
         // Constructors
-        public FarmSolvers() {}
-        
+        public FarmSolvers() { }
+
         public List<Solver> Solvers
         {
             get { return solvers; }
@@ -23,6 +23,20 @@ namespace KoshiSolvers
             solvers.Add(solver);
         }
 
+        public int FindSolverByName(string Name)
+        {
+            int index = 0;
+            foreach (Solver solver in solvers)
+            {
+                if (solver.Name == Name)
+                {
+                    return index;
+                }
+                index++;
+            }
+            throw new ArgumentException("There is no such solver");
+        }
+        
         public List<Point> SolveProblem(int SolverIndex, TaskKoshi Task)
         {
             return solvers[SolverIndex].SolveKoshiTask(Task);
@@ -55,8 +69,8 @@ namespace KoshiSolvers
 
         public bool isArraySolversEmpty()
         {
-           if (Solvers.Count == 0) return true;
-           return false;
+            if (Solvers.Count == 0) return true;
+            return false;
         }
 
     }
