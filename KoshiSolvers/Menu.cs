@@ -21,6 +21,7 @@ namespace KoshiSolvers
                 SolverTypes Type = (SolverTypes)Convert.ToByte(Console.ReadLine());
                 Console.Write("Enter solver name: ");
                 string Name = Console.ReadLine();
+                farm.CheckNameRepeat(Name);
                 Console.Write("Enter solver behavior(1 - Stop at left border, 2 - after left border, 3 - before left border): ");
                 BehaviorOfSolver Behavior = (BehaviorOfSolver)Convert.ToByte(Console.ReadLine());
 
@@ -33,7 +34,7 @@ namespace KoshiSolvers
                         farm.Solvers.Add(new HoinSolver(Name, Behavior));
                         break;
                     default:
-                        throw new ArgumentException("Неверный тип решателя");
+                        throw new ArgumentException("Wrong solver type!");
                 }
             }
             catch (Exception err)
@@ -46,10 +47,10 @@ namespace KoshiSolvers
         {
             try
             {
-                Console.Write("Введите название решателя: ");
+                Console.Write("Enter solver name: ");
                 string Name = Console.ReadLine();
                 farm.DeleteSolver(Name);
-                Console.WriteLine("");
+                Console.WriteLine("Solver was successfully deleted");
             }
             catch (Exception err)
             {

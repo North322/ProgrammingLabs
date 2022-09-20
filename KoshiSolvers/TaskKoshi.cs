@@ -48,10 +48,17 @@ namespace KoshiSolvers
         // Constructors
         public TaskKoshi(double _Y0, double _T0, double _T, double _H)
         {
-            t0 = _Y0;
-            t0 = _T0;
-            t = _T;
-            h = _H;
+            try
+            {
+                t0 = _Y0;
+                t0 = _T0;
+                t = _T;
+                h = _H;
+            }
+            catch (Exception err)
+            {
+                Console.WriteLine(err.Message);
+            }
         }
 
         //Methods
