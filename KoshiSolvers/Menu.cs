@@ -62,17 +62,34 @@ namespace KoshiSolvers
         // Probably should use streams instead of Console.WriteLine
         private void handlePrintSolversOption()
         {
-           foreach (Solver solver in farm.Solvers) {
-               Console.WriteLine(solver.ToString());
-           }              
+            foreach (Solver solver in farm.Solvers)
+            {
+                Console.WriteLine(solver.ToString());
+            }
         }
+        private double y0;
+        private double t0;
+        private double t;
+        private double h;
+
 
         private void handleSolveTaskOption()
         {
             Console.WriteLine("Enter solver name: ");
-            string Name = Console.ReadLine(); 
-              
-            farm.Solvers[farm.FindSolverByName(Name)].SolveKoshiTask(Task);
+            string Name = Console.ReadLine();
+            
+            Console.WriteLine("Enter y0: ");
+            double y0 = Convert.ToDouble(Console.ReadLine());
+            
+            Console.WriteLine("Enter t0: ");
+            double t0 = Convert.ToDouble(Console.ReadLine());
+            
+            Console.WriteLine("Enter t: ");
+            double t = Convert.ToDouble(Console.ReadLine());
+            
+            Console.WriteLine("Enter h: ");
+            double h = Convert.ToDouble(Console.ReadLine());
+            farm.Solvers[farm.FindSolverByName(Name)].SolveKoshiTask(new TaskKoshi(y0, t0, t, h));
         }
     }
 }
