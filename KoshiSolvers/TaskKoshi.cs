@@ -7,12 +7,17 @@ namespace KoshiSolvers
 {
     class TaskKoshi
     {
+        private Func<double,double,double> func;
         private double y0;
         private double t0;
         private double t;
         private double h;
-
+        
         // Properties
+        public Func<double, double, double> Func {
+            get { return func;}
+            set { func = value; }
+        } 
         public double Y0
         {
             get { return y0; }
@@ -48,17 +53,23 @@ namespace KoshiSolvers
         // Constructors
         public TaskKoshi(double _Y0, double _T0, double _T, double _H)
         {
-            t0 = _Y0;
-            t0 = _T0;
-            t = _T;
-            h = _H;
+            try
+            {
+                t0 = _Y0;
+                t0 = _T0;
+                t = _T;
+                h = _H;
+            }
+            catch (Exception err)
+            {
+                Console.WriteLine(err.Message);
+            }
         }
 
-        //Methods
+        // func should receive two double x y values and return f(x,y) 
         public double CountFunctionValue(double Xi, double Yi)
         {
-            double parameter = Xi + Yi;
-            return Math.Sin(parameter * Math.PI / 180);
+            return func(Xi, Yi);
         }
     }
 }

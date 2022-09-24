@@ -7,7 +7,12 @@ namespace KoshiSolvers
     class HoinSolver : Solver
     {
         public HoinSolver(string _Name, BehaviorOfSolver _Behaviour) : base(_Name, _Behaviour) { }
-        
+
+        public override String ToString()
+        {
+            return $"{Name}:\nType: HoinSolver,\nBehavior: {Behavior}\n";
+        }
+
         public override List<Point> SolveKoshiTask(TaskKoshi Task)
         {
             List<Point> Points = new List<Point>();
@@ -26,15 +31,11 @@ namespace KoshiSolvers
 
                 FunctionValue = Task.CountFunctionValue(Points[i].X, Points[i].Y);
 
-
                 // Особый случай не поподания на конец интервала
                 if ((Points[i].X + StepSize) > Task.T)
                 {
                     switch (Behavior)//// // случаи непопадания на границу отрезка
                     {
-                        case BehaviorOfSolver.NoneBehavior:
-                            break;
-
                         case BehaviorOfSolver.FinishAtTheLeftBorder:
 
                             StepSize = Task.T - (StepSize * i + Points[0].X);

@@ -10,42 +10,50 @@ namespace KoshiSolvers
         private List<Solver> solvers;
 
         // Constructors
-        public FarmSolvers() {}
-        
+        public FarmSolvers() { }
+
         public List<Solver> Solvers
         {
             get { return solvers; }
         }
 
         // Methods
-        public void AddSolver(SolverTypes solverType, BehaviorOfSolver behavior)
+        public void AddSolver(Solver solver)
         {
-            switch (solverType) {
-                case SolverTypes.EulerSolver:
-                    solvers.Add(new EulerSolver(behavior));
-                    break;
-                case SolverTypes.HoinSolver:
-                    solvers.Add(new HoinSolver(behavior));
-                    break;
-            }
+            solvers.Add(solver);
         }
 
+        public int FindSolverByName(string Name)
+        {
+            int index = 0;
+            foreach (Solver solver in solvers)
+            {
+                if (solver.Name == Name)
+                {
+                    return index;
+                }
+                index++;
+            }
+            throw new ArgumentException("There is no such solver");
+        }
+        
         public List<Point> SolveProblem(int SolverIndex, TaskKoshi Task)
         {
             return solvers[SolverIndex].SolveKoshiTask(Task);
         }
 
-        public bool DeleteSolver(string Name)
+        public void DeleteSolver(string Name)
         {
             foreach (Solver solver in Solvers)
             {
                 if (solver.Name == Name)
                 {
                     Solvers.Remove(solver);
-                    return true;
+                    return;
                 }
             }
-            return false;
+
+            throw new ArgumentException("There is no such solver");
         }
 
         public void CheckNameRepeat(string Name)
@@ -54,15 +62,15 @@ namespace KoshiSolvers
             {
                 if (solver.Name == Name)
                 {
-                    throw new ArgumentException("This name already exists");
+                    throw new ArgumentException("Solver with this name already exists");
                 }
             }
         }
 
         public bool isArraySolversEmpty()
         {
-           if (Solvers.Count == 0) return true;
-           return false;
+            if (Solvers.Count == 0) return true;
+            return false;
         }
 
     }

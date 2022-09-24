@@ -8,7 +8,7 @@ namespace KoshiSolvers
         private string name;
         protected BehaviorOfSolver behavior;
         public abstract List<Point> SolveKoshiTask(TaskKoshi Task);
-
+        
         public Solver(string _Name, BehaviorOfSolver _Behaviour) 
         { 
             behavior = _Behaviour; 

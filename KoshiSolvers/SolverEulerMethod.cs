@@ -8,6 +8,10 @@ namespace KoshiSolvers
     {
         public EulerSolver(string _Name,BehaviorOfSolver _Behaviour) : base(_Name ,_Behaviour) { }
         
+        public override String ToString() {
+            return $"{Name}:\nType: EulerSolver,\nBehavior: {Behavior}\n";
+        }         
+        
         public override List<Point> SolveKoshiTask(TaskKoshi Task)
         {
             List<Point> Points = new List<Point>();
@@ -29,9 +33,6 @@ namespace KoshiSolvers
                 {
                     switch (Behavior)
                     {
-                        case BehaviorOfSolver.NoneBehavior:
-                            break;
-
                         case BehaviorOfSolver.FinishAtTheLeftBorder:
 
                             StepSize = Task.T - (StepSize * i + Points[0].X);
@@ -52,6 +53,6 @@ namespace KoshiSolvers
             }
             return Points;
         }
-    }
+    }    
 }
 
