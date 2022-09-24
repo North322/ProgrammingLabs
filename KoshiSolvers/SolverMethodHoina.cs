@@ -31,7 +31,6 @@ namespace KoshiSolvers
 
                 FunctionValue = Task.CountFunctionValue(Points[i].X, Points[i].Y);
 
-
                 // Особый случай не поподания на конец интервала
                 if ((Points[i].X + StepSize) > Task.T)
                 {

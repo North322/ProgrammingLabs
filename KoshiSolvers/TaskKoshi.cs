@@ -12,6 +12,7 @@ namespace KoshiSolvers
         private double t0;
         private double t;
         private double h;
+        
         // Properties
         public Func<double, double, double> Func {
             get { return func;}
