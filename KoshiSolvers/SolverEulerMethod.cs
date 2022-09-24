@@ -12,36 +12,36 @@ namespace KoshiSolvers
             return $"{Name}:\nType: EulerSolver,\nBehavior: {Behavior}\n";
         }         
         
-        public override List<Point> SolveKoshiTask(TaskKoshi Task)
+        public override void SolveKoshiTask(TaskKoshi Task)
         {
-            List<Point> Points = new List<Point>();
             double FunctionValue;
             double StepSize = Task.H;
 
             int i = 1;
 
-            Points.Add(new Point(Task.T0, Task.Y0));
-            FunctionValue = Task.CountFunctionValue(Points[0].X, Points[0].Y);
+            Solution.Clear();
+            Solution.Add(new Point(Task.T0, Task.Y0));
+            FunctionValue = Task.CountFunctionValue(Solution[0].X, Solution[0].Y);
 
-            while (Points[i - 1].X <= Task.T)
+            while (Solution[i - 1].X <= Task.T)
             {
-                Points.Add(new Point(Points[i - 1].X + StepSize, Points[i - 1].Y + StepSize * FunctionValue));
-                FunctionValue = Task.CountFunctionValue(Points[i].X, Points[i].Y);
+                Solution.Add(new Point(Solution[i - 1].X + StepSize, Solution[i - 1].Y + StepSize * FunctionValue));
+                FunctionValue = Task.CountFunctionValue(Solution[i].X, Solution[i].Y);
 
                 // случаи непопадания на границу отрезка
-                if ((Points[i].X + StepSize) > Task.T)
+                if ((Solution[i].X + StepSize) > Task.T)
                 {
                     switch (Behavior)
                     {
                         case BehaviorOfSolver.FinishAtTheLeftBorder:
 
-                            StepSize = Task.T - (StepSize * i + Points[0].X);
+                            StepSize = Task.T - (StepSize * i + Solution[0].X);
 
-                            Points.Add(new Point(Points[i].X + StepSize, Points[i].Y + StepSize * FunctionValue));
+                            Solution.Add(new Point(Solution[i].X + StepSize, Solution[i].Y + StepSize * FunctionValue));
                             break;
 
                         case BehaviorOfSolver.FinishAfterLeftBorder:
-                            Points.Add(new Point(Points[i].X + StepSize, Points[i].Y + StepSize * FunctionValue));
+                            Solution.Add(new Point(Solution[i].X + StepSize, Solution[i].Y + StepSize * FunctionValue));
                             break;
 
                         case BehaviorOfSolver.FinishBeforeLeftBorder:
@@ -51,7 +51,6 @@ namespace KoshiSolvers
                 }
                 i++;
             }
-            return Points;
         }
     }    
 }

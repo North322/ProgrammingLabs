@@ -5,7 +5,42 @@ namespace KoshiSolvers
     {
         public void listen()
         {
-            
+            while (true)
+            {
+                Console.Write($"\n\tMenu options\n" + 
+                        $"{ADD_SOLVER_OPTION}-Add hourly wage worker\n" +
+                        $"{DELETE_SOLVER_OPTION}-Add commission wage worker\n" +
+                        $"{PRINT_SOLVERS_OPTION}-Fire worker by full name\n" +
+                        $"{SOLVE_TASK_OPTION}-Simulate work\n" +
+                        $"{PRINT_SOLUTIONS_OPTION}-Print hourly wage workers\n" +
+                        $"{EXIT_OPTION}-EXIT\n\n");
+
+                Console.Write("Enter option: ");
+                byte option = Convert.ToByte(Console.ReadLine());
+
+                switch (option) {
+                    case 1:
+                        handleAddSolverOption(); 
+                        break;
+                    case 2:
+                        handleDeleteSolverOption();
+                        break;
+                    case 3:
+                        handlePrintSolversOption();
+                        break;
+                    case 4:
+                        handleSolveTaskOption();
+                        break;
+                    case 5:
+                        handlePrintSolutions();
+                        break;
+                    case 6:
+                        return;
+                    default:
+                        Console.Write("There is no such option!");
+                        break;
+                }
+            }
         }
 
         private FarmSolvers farm;
@@ -14,6 +49,8 @@ namespace KoshiSolvers
         const short DELETE_SOLVER_OPTION = 2;
         const short PRINT_SOLVERS_OPTION = 3;
         const short SOLVE_TASK_OPTION = 4;
+        const short PRINT_SOLUTIONS_OPTION = 5;
+        const short EXIT_OPTION = 6;
 
         private void handleAddSolverOption()
         {
@@ -69,23 +106,39 @@ namespace KoshiSolvers
                 Console.WriteLine(solver.ToString());
             }
         }
+
         private void handleSolveTaskOption()
         {
-            Console.WriteLine("Enter solver name: ");
+            Console.Write("Enter solver name: ");
             string Name = Console.ReadLine();
 
-            Console.WriteLine("Enter y0: ");
+            Console.Write("Enter y0: ");
             double y0 = Convert.ToDouble(Console.ReadLine());
 
-            Console.WriteLine("Enter t0: ");
+            Console.Write("Enter t0: ");
             double t0 = Convert.ToDouble(Console.ReadLine());
 
-            Console.WriteLine("Enter t: ");
+            Console.Write("Enter t: ");
             double t = Convert.ToDouble(Console.ReadLine());
 
-            Console.WriteLine("Enter h: ");
+            Console.Write("Enter h: ");
             double h = Convert.ToDouble(Console.ReadLine());
             farm.Solvers[farm.FindSolverByName(Name)].SolveKoshiTask(new TaskKoshi(y0, t0, t, h));
+        }
+
+        private void handlePrintSolutions()
+        {
+            int i;
+
+            foreach (Solver solver in farm.Solvers)
+            {
+                i = 0;
+                foreach (Point point in solver.Solution)
+                {
+                    Console.WriteLine($"x{i}: {point.X}, y{i}: {point.Y}");
+                    i++;
+                }
+            }
         }
     }
 }

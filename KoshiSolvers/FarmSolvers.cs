@@ -37,9 +37,10 @@ namespace KoshiSolvers
             throw new ArgumentException("There is no such solver");
         }
         
-        public List<Point> SolveProblem(int SolverIndex, TaskKoshi Task)
+        public void SolveProblem(TaskKoshi Task)
         {
-            return solvers[SolverIndex].SolveKoshiTask(Task);
+            foreach (Solver solver in solvers)
+                solver.SolveKoshiTask(Task);
         }
 
         public void DeleteSolver(string Name)
@@ -66,12 +67,5 @@ namespace KoshiSolvers
                 }
             }
         }
-
-        public bool isArraySolversEmpty()
-        {
-            if (Solvers.Count == 0) return true;
-            return false;
-        }
-
     }
 }

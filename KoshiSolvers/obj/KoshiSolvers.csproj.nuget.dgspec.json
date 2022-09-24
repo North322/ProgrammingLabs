@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/home/thenorth/KoshiSolvers/KoshiSolvers.csproj": {}
+    "/home/thenorth/ProgrammingLabs/KoshiSolvers/KoshiSolvers.csproj": {}
   },
   "projects": {
-    "/home/thenorth/KoshiSolvers/KoshiSolvers.csproj": {
+    "/home/thenorth/ProgrammingLabs/KoshiSolvers/KoshiSolvers.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/thenorth/KoshiSolvers/KoshiSolvers.csproj",
+        "projectUniqueName": "/home/thenorth/ProgrammingLabs/KoshiSolvers/KoshiSolvers.csproj",
         "projectName": "KoshiSolvers",
-        "projectPath": "/home/thenorth/KoshiSolvers/KoshiSolvers.csproj",
+        "projectPath": "/home/thenorth/ProgrammingLabs/KoshiSolvers/KoshiSolvers.csproj",
         "packagesPath": "/home/thenorth/.nuget/packages/",
-        "outputPath": "/home/thenorth/KoshiSolvers/obj/",
+        "outputPath": "/home/thenorth/ProgrammingLabs/KoshiSolvers/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/thenorth/.nuget/NuGet/NuGet.Config"
@@ -55,10 +55,6 @@
             {
               "name": "Microsoft.NETCore.App.Host.linux-x64",
               "version": "[3.1.28, 3.1.28]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Ref",
-              "version": "[3.1.0, 3.1.0]"
             }
           ],
           "frameworkReferences": {
