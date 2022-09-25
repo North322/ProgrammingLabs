@@ -6,13 +6,7 @@ namespace KoshiSolvers
 {
     class EulerSolver: Solver
     {
-        public EulerSolver(string _Name,BehaviorOfSolver _Behaviour) : base(_Name ,_Behaviour) { }
-        
-        public override String ToString() {
-            return $"{Name}:\n" +
-                $"Type: EulerSolver,\n" +
-                $"Behavior: {Behavior}\n";
-        }         
+        public EulerSolver(string _Name, BehaviorOfSolver _Behaviour) : base(_Name ,_Behaviour) { }
         
         public override void SolveKoshiTask(TaskKoshi Task)
         {

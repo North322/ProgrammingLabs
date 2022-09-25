@@ -8,7 +8,7 @@ namespace KoshiSolvers
     {
         // Constructors
         public FarmSolvers() {
-           List<Solver> Solvers = new List<Solver>(); 
+           Solvers = new List<Solver>(); 
         }
 
         public List<Solver> Solvers { get; set; }

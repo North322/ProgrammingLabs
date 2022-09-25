@@ -44,10 +44,7 @@ namespace KoshiSolvers
             }
         }
 
-        private FarmSolvers Farm {
-            get;
-            set;
-        }
+        public FarmSolvers Farm { get; set; }
         
         const byte ADD_SOLVER_OPTION = 1;
         const byte DELETE_SOLVER_OPTION = 2;

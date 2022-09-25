@@ -8,11 +8,6 @@ namespace KoshiSolvers
     {
         public HoinSolver(string _Name, BehaviorOfSolver _Behaviour) : base(_Name, _Behaviour) { }
 
-        public override String ToString()
-        {
-            return $"{Name}:\nType: HoinSolver,\nBehavior: {Behavior}\n";
-        }
-
         public override void SolveKoshiTask(TaskKoshi Task)
         {
             double StepSize = Task.H;

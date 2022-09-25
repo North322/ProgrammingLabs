@@ -7,31 +7,33 @@ namespace KoshiSolvers
 {
     class TaskKoshi
     {
-        // Properties
-        public Func<double, double, double> Func { get; set; }
+        private double y0;
+        private double t0;
+        private double t;
+        private double h;
 
-        public double Y0 { get; set; }
+        public double Y0 { get { return y0; } set { y0 = value; } }
 
-        public double T0 { get; set; }
+        public double T0 { get { return t0; } set { t0 = value; } }
 
         public double T
         {
-            get { return T; }
+            get { return t; }
             set
             {
-                if (value >= T0)
+                if (value >= t0)
                     throw new ArgumentException("Right border must be greater than left one");
-                T = value;
+                t = value;
             }
         }
         public double H
         {
-            get { return H; }
+            get { return h; }
             set
             {
-                if (H <= 0)
+                if (h <= 0)
                     throw new ArgumentException("Step can't have zero or negative value");
-                H = value;
+                h = value;
             }
         }
 
@@ -40,10 +42,10 @@ namespace KoshiSolvers
         {
             try
             {
-                Y0 = _Y0;
-                T0 = _T0;
-                T = _T;
-                H = _H;
+                y0 = _Y0;
+                t0 = _T0;
+                t = _T;
+                h = _H;
             }
             catch (Exception err)
             {
