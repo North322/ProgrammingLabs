@@ -1,4 +1,5 @@
 using System;
+
 namespace KoshiSolvers
 {
     class Menu
@@ -119,9 +120,6 @@ namespace KoshiSolvers
         {
             try
             {
-                Console.Write("Enter solver name: ");
-                string Name = Console.ReadLine();
-
                 Console.Write("Enter y0: ");
                 double y0 = Convert.ToDouble(Console.ReadLine());
 
@@ -133,7 +131,12 @@ namespace KoshiSolvers
 
                 Console.Write("Enter h: ");
                 double h = Convert.ToDouble(Console.ReadLine());
-                Farm.Solvers[Farm.FindSolverByName(Name)].SolveKoshiTask(new TaskKoshi(y0, t0, t, h));
+                
+                TaskKoshi task = new TaskKoshi(y0, t0, t, h);
+                
+                foreach(Solver solver in Farm.Solvers) {
+                    solver.SolveKoshiTask(task);
+                } 
             }
             catch (Exception err)
             {
@@ -145,7 +148,7 @@ namespace KoshiSolvers
         {
             try
             {
-                Console.WriteLine("Enter solver name");
+                Console.Write("Enter solver name: ");
                 string name = Console.ReadLine();
                 int i = 0;
 
@@ -153,13 +156,18 @@ namespace KoshiSolvers
                 {
                     if (solver.Name == name)
                     {
+                        if (solver.Solution.Count == 0)
+                            throw new ArgumentException("This solver doesn't have a solution yet!");
+
                         foreach (Point point in solver.Solution)
                         {
                             Console.WriteLine($"x{i}: {point.X}, y{i}: {point.Y}");
                             i++;
                         }
+                        return;
                     }
                 }
+                throw new ArgumentException("There is no such solver!");
             }
             catch (Exception err)
             {

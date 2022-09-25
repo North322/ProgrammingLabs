@@ -41,7 +41,7 @@ namespace KoshiSolvers
             set
             {
                 if (!Enum.IsDefined(typeof(BehaviorOfSolver), value))
-                    throw new ArgumentException("Unknown type for solver!");
+                    throw new ArgumentException("Wrong type for solver!");
                 behaviour = value;
             }
         }
