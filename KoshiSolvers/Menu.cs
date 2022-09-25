@@ -7,20 +7,21 @@ namespace KoshiSolvers
         {
             while (true)
             {
-                Console.Write($"\n\tMenu options\n" + 
-                        $"{ADD_SOLVER_OPTION}-Add hourly wage worker\n" +
-                        $"{DELETE_SOLVER_OPTION}-Add commission wage worker\n" +
-                        $"{PRINT_SOLVERS_OPTION}-Fire worker by full name\n" +
-                        $"{SOLVE_TASK_OPTION}-Simulate work\n" +
-                        $"{PRINT_SOLUTIONS_OPTION}-Print hourly wage workers\n" +
+                Console.Write($"\n\tMenu options\n" +
+                        $"{ADD_SOLVER_OPTION}-Add solver\n" +
+                        $"{DELETE_SOLVER_OPTION}-Delete solver\n" +
+                        $"{PRINT_SOLVERS_OPTION}-Print solvers\n" +
+                        $"{SOLVE_TASK_OPTION}-Solve task\n" +
+                        $"{PRINT_SOLUTION_OPTION}-Print solution\n" +
                         $"{EXIT_OPTION}-EXIT\n\n");
 
                 Console.Write("Enter option: ");
                 byte option = Convert.ToByte(Console.ReadLine());
 
-                switch (option) {
+                switch (option)
+                {
                     case 1:
-                        handleAddSolverOption(); 
+                        handleAddSolverOption();
                         break;
                     case 2:
                         handleDeleteSolverOption();
@@ -32,7 +33,7 @@ namespace KoshiSolvers
                         handleSolveTaskOption();
                         break;
                     case 5:
-                        handlePrintSolutions();
+                        handlePrintSolution();
                         break;
                     case 6:
                         return;
@@ -45,12 +46,12 @@ namespace KoshiSolvers
 
         private FarmSolvers farm;
 
-        const short ADD_SOLVER_OPTION = 1;
-        const short DELETE_SOLVER_OPTION = 2;
-        const short PRINT_SOLVERS_OPTION = 3;
-        const short SOLVE_TASK_OPTION = 4;
-        const short PRINT_SOLUTIONS_OPTION = 5;
-        const short EXIT_OPTION = 6;
+        const byte ADD_SOLVER_OPTION = 1;
+        const byte DELETE_SOLVER_OPTION = 2;
+        const byte PRINT_SOLVERS_OPTION = 3;
+        const byte SOLVE_TASK_OPTION = 4;
+        const byte PRINT_SOLUTION_OPTION = 5;
+        const byte EXIT_OPTION = 6;
 
         private void handleAddSolverOption()
         {
@@ -58,9 +59,11 @@ namespace KoshiSolvers
             {
                 Console.Write("Enter solver type: ");
                 SolverTypes Type = (SolverTypes)Convert.ToByte(Console.ReadLine());
+
                 Console.Write("Enter solver name: ");
                 string Name = Console.ReadLine();
                 farm.CheckNameRepeat(Name);
+
                 Console.Write("Enter solver behavior(1 - Stop at left border, 2 - after left border, 3 - before left border): ");
                 BehaviorOfSolver Behavior = (BehaviorOfSolver)Convert.ToByte(Console.ReadLine());
 
@@ -97,8 +100,6 @@ namespace KoshiSolvers
             }
         }
 
-        // Think about data output. Method shoudn't print smth in Console
-        // Probably should use streams instead of Console.WriteLine
         private void handlePrintSolversOption()
         {
             foreach (Solver solver in farm.Solvers)
@@ -109,36 +110,46 @@ namespace KoshiSolvers
 
         private void handleSolveTaskOption()
         {
-            Console.Write("Enter solver name: ");
-            string Name = Console.ReadLine();
+            try
+            {
+                Console.Write("Enter solver name: ");
+                string Name = Console.ReadLine();
 
-            Console.Write("Enter y0: ");
-            double y0 = Convert.ToDouble(Console.ReadLine());
+                Console.Write("Enter y0: ");
+                double y0 = Convert.ToDouble(Console.ReadLine());
 
-            Console.Write("Enter t0: ");
-            double t0 = Convert.ToDouble(Console.ReadLine());
+                Console.Write("Enter t0: ");
+                double t0 = Convert.ToDouble(Console.ReadLine());
 
-            Console.Write("Enter t: ");
-            double t = Convert.ToDouble(Console.ReadLine());
+                Console.Write("Enter t: ");
+                double t = Convert.ToDouble(Console.ReadLine());
 
-            Console.Write("Enter h: ");
-            double h = Convert.ToDouble(Console.ReadLine());
-            farm.Solvers[farm.FindSolverByName(Name)].SolveKoshiTask(new TaskKoshi(y0, t0, t, h));
+                Console.Write("Enter h: ");
+                double h = Convert.ToDouble(Console.ReadLine());
+                farm.Solvers[farm.FindSolverByName(Name)].SolveKoshiTask(new TaskKoshi(y0, t0, t, h));
+            }
+            catch (Exception err)
+            {
+                Console.WriteLine(err.Message);
+            }
         }
 
-        private void handlePrintSolutions()
+        private void handlePrintSolution()
         {
-            int i;
-
-            foreach (Solver solver in farm.Solvers)
+            try
             {
-                i = 0;
-                foreach (Point point in solver.Solution)
+                Console.WriteLine("Enter solver index");
+                byte index = Convert.ToByte(Console.ReadLine());
+                int i = 0;
+
+                foreach (Point point in farm.Solvers[index - 1].Solution)
                 {
                     Console.WriteLine($"x{i}: {point.X}, y{i}: {point.Y}");
                     i++;
                 }
+            } catch (Exception err) {
+                Console.WriteLine(err.Message);
             }
-        }
+       }
     }
 }

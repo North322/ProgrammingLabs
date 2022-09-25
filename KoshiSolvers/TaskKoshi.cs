@@ -7,47 +7,32 @@ namespace KoshiSolvers
 {
     class TaskKoshi
     {
-        private Func<double,double,double> func;
-        private double y0;
-        private double t0;
-        private double t;
-        private double h;
-        
         // Properties
-        public Func<double, double, double> Func {
-            get { return func;}
-            set { func = value; }
-        } 
-        public double Y0
-        {
-            get { return y0; }
-            set { y0 = value; }
-        }
+        public Func<double, double, double> Func { get; set; }
 
-        public double T0
-        {
-            get { return t0; }
-            set { t0 = value; }
-        }
+        public double Y0 { get; set; }
+
+        public double T0 { get; set; }
+
         public double T
         {
-            get { return t; }
+            get { return T; }
             set
             {
-                if (value >= t0)
+                if (value >= T0)
                     throw new ArgumentException("Right border must be greater than left one");
-                t = value;
+                T = value;
             }
         }
         public double H
         {
-            get
+            get { return H; }
+            set
             {
-                if (h <= 0)
+                if (H <= 0)
                     throw new ArgumentException("Step can't have zero or negative value");
-                return h;
+                H = value;
             }
-            set { h = value; }
         }
 
         // Constructors
@@ -55,10 +40,10 @@ namespace KoshiSolvers
         {
             try
             {
-                t0 = _Y0;
-                t0 = _T0;
-                t = _T;
-                h = _H;
+                Y0 = _Y0;
+                T0 = _T0;
+                T = _T;
+                H = _H;
             }
             catch (Exception err)
             {
@@ -66,10 +51,9 @@ namespace KoshiSolvers
             }
         }
 
-        // func should receive two double x y values and return f(x,y) 
         public double CountFunctionValue(double Xi, double Yi)
         {
-            return func(Xi, Yi);
+            return Math.Sin((Xi + Yi) * Math.PI / 180);
         }
     }
 }

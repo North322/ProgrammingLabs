@@ -52,7 +52,6 @@ namespace KoshiSolvers
                         case BehaviorOfSolver.FinishBeforeLeftBorder:
                             break;
                     }
-                    break;
                 }
                 i++;
             }

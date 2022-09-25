@@ -9,7 +9,9 @@ namespace KoshiSolvers
         public EulerSolver(string _Name,BehaviorOfSolver _Behaviour) : base(_Name ,_Behaviour) { }
         
         public override String ToString() {
-            return $"{Name}:\nType: EulerSolver,\nBehavior: {Behavior}\n";
+            return $"{Name}:\n" +
+                $"Type: EulerSolver,\n" +
+                $"Behavior: {Behavior}\n";
         }         
         
         public override void SolveKoshiTask(TaskKoshi Task)
@@ -47,7 +49,6 @@ namespace KoshiSolvers
                         case BehaviorOfSolver.FinishBeforeLeftBorder:
                             break;
                     }
-                    break;
                 }
                 i++;
             }

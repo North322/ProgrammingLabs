@@ -5,16 +5,15 @@ namespace KoshiSolvers
 {
     abstract class Solver
     {
-        private string name;
-        protected BehaviorOfSolver behavior;
-        public List<Point> Solution { get; set; }
         public abstract void SolveKoshiTask(TaskKoshi Task);
 
         public Solver(string _Name, BehaviorOfSolver _Behaviour) 
         { 
-            behavior = _Behaviour; 
-            name = _Name;
+            Behavior = _Behaviour; 
+            Name = _Name;
         }
+        
+        public List<Point> Solution { get; set; }
         
         public string Name
         {
@@ -23,18 +22,18 @@ namespace KoshiSolvers
             {
                 if (String.IsNullOrWhiteSpace(value))
                     throw new ArgumentException("SolverName shouldn't be empty, null, or white space!");
-                name = value;
+                Name = value;
             }
         }
 
         public BehaviorOfSolver Behavior
         {
-            get { return behavior; }
+            get { return Behavior; }
             set 
             {
                 if (!Enum.IsDefined(typeof(BehaviorOfSolver), value))
                     throw new ArgumentException("Unknown type for solver!");
-                behavior = value; 
+                Behavior = value; 
             }
         }
     }

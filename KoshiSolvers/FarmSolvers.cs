@@ -6,27 +6,22 @@ namespace KoshiSolvers
 {
     class FarmSolvers
     {
-        // Data
-        private List<Solver> solvers;
-
         // Constructors
         public FarmSolvers() { }
 
-        public List<Solver> Solvers
-        {
-            get { return solvers; }
-        }
+        public List<Solver> Solvers { get; set; }
+        
 
         // Methods
         public void AddSolver(Solver solver)
         {
-            solvers.Add(solver);
+            Solvers.Add(solver);
         }
 
         public int FindSolverByName(string Name)
         {
             int index = 0;
-            foreach (Solver solver in solvers)
+            foreach (Solver solver in Solvers)
             {
                 if (solver.Name == Name)
                 {
@@ -36,10 +31,10 @@ namespace KoshiSolvers
             }
             throw new ArgumentException("There is no such solver");
         }
-        
+
         public void SolveProblem(TaskKoshi Task)
         {
-            foreach (Solver solver in solvers)
+            foreach (Solver solver in Solvers)
                 solver.SolveKoshiTask(Task);
         }
 
