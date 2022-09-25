@@ -1,7 +1,5 @@
-﻿using System;
-
-enum BehaviorOfSolver : byte { FinishAtTheLeftBorder = 1, FinishAfterLeftBorder, FinishBeforeLeftBorder };
-enum SolverTypes : byte {EulerSolver = 1, HoinSolver};
+﻿public enum BehaviorOfSolver : byte { FinishAtTheLeftBorder = 1, FinishAfterLeftBorder, FinishBeforeLeftBorder };
+public enum SolverTypes : byte {EulerSolver = 1, HoinSolver};
 
 namespace KoshiSolvers
 {

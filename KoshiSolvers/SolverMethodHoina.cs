@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace KoshiSolvers
+﻿namespace KoshiSolvers
 {
-    class HoinSolver : Solver
+    public class HoinSolver : Solver
     {
         public HoinSolver(string _Name, BehaviorOfSolver _Behaviour) : base(_Name, _Behaviour) { }
 

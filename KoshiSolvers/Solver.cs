@@ -3,7 +3,7 @@ using System;
 
 namespace KoshiSolvers
 {
-    abstract class Solver
+    public abstract class Solver
     {
         private BehaviorOfSolver behaviour;
         private string name;

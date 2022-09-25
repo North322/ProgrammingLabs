@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Numerics;
 
 namespace KoshiSolvers
 {
-    class TaskKoshi
+    public class TaskKoshi
     {
         private double y0;
         private double t0;
