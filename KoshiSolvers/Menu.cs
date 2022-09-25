@@ -45,16 +45,17 @@ namespace KoshiSolvers
         }
 
         public FarmSolvers Farm { get; set; }
-        
+
         const byte ADD_SOLVER_OPTION = 1;
         const byte DELETE_SOLVER_OPTION = 2;
         const byte PRINT_SOLVERS_OPTION = 3;
         const byte SOLVE_TASK_OPTION = 4;
         const byte PRINT_SOLUTION_OPTION = 5;
         const byte EXIT_OPTION = 6;
-        
-        public Menu() {
-            Farm = new FarmSolvers(); 
+
+        public Menu()
+        {
+            Farm = new FarmSolvers();
         }
 
         private void handleAddSolverOption()
@@ -82,6 +83,7 @@ namespace KoshiSolvers
                     default:
                         throw new ArgumentException("Wrong solver type!");
                 }
+                Console.WriteLine("Solver was successfully added!");
             }
             catch (Exception err)
             {
@@ -108,7 +110,8 @@ namespace KoshiSolvers
         {
             foreach (Solver solver in Farm.Solvers)
             {
-                Console.WriteLine(solver.ToString());
+                Console.WriteLine($"Solver name: {solver.Name}\n" +
+                                $"Solver behavior: {solver.Behavior}");
             }
         }
 
@@ -142,18 +145,26 @@ namespace KoshiSolvers
         {
             try
             {
-                Console.WriteLine("Enter solver index");
-                byte index = Convert.ToByte(Console.ReadLine());
+                Console.WriteLine("Enter solver name");
+                string name = Console.ReadLine();
                 int i = 0;
 
-                foreach (Point point in Farm.Solvers[index - 1].Solution)
+                foreach (Solver solver in Farm.Solvers)
                 {
-                    Console.WriteLine($"x{i}: {point.X}, y{i}: {point.Y}");
-                    i++;
+                    if (solver.Name == name)
+                    {
+                        foreach (Point point in solver.Solution)
+                        {
+                            Console.WriteLine($"x{i}: {point.X}, y{i}: {point.Y}");
+                            i++;
+                        }
+                    }
                 }
-            } catch (Exception err) {
+            }
+            catch (Exception err)
+            {
                 Console.WriteLine(err.Message);
             }
-       }
+        }
     }
 }
