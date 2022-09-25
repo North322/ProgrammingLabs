@@ -44,14 +44,21 @@ namespace KoshiSolvers
             }
         }
 
-        private FarmSolvers farm;
-
+        private FarmSolvers Farm {
+            get;
+            set;
+        }
+        
         const byte ADD_SOLVER_OPTION = 1;
         const byte DELETE_SOLVER_OPTION = 2;
         const byte PRINT_SOLVERS_OPTION = 3;
         const byte SOLVE_TASK_OPTION = 4;
         const byte PRINT_SOLUTION_OPTION = 5;
         const byte EXIT_OPTION = 6;
+        
+        public Menu() {
+            Farm = new FarmSolvers(); 
+        }
 
         private void handleAddSolverOption()
         {
@@ -62,7 +69,7 @@ namespace KoshiSolvers
 
                 Console.Write("Enter solver name: ");
                 string Name = Console.ReadLine();
-                farm.CheckNameRepeat(Name);
+                Farm.CheckNameRepeat(Name);
 
                 Console.Write("Enter solver behavior(1 - Stop at left border, 2 - after left border, 3 - before left border): ");
                 BehaviorOfSolver Behavior = (BehaviorOfSolver)Convert.ToByte(Console.ReadLine());
@@ -70,10 +77,10 @@ namespace KoshiSolvers
                 switch (Type)
                 {
                     case SolverTypes.EulerSolver:
-                        farm.Solvers.Add(new EulerSolver(Name, Behavior));
+                        Farm.Solvers.Add(new EulerSolver(Name, Behavior));
                         break;
                     case SolverTypes.HoinSolver:
-                        farm.Solvers.Add(new HoinSolver(Name, Behavior));
+                        Farm.Solvers.Add(new HoinSolver(Name, Behavior));
                         break;
                     default:
                         throw new ArgumentException("Wrong solver type!");
@@ -91,7 +98,7 @@ namespace KoshiSolvers
             {
                 Console.Write("Enter solver name: ");
                 string Name = Console.ReadLine();
-                farm.DeleteSolver(Name);
+                Farm.DeleteSolver(Name);
                 Console.WriteLine("Solver was successfully deleted");
             }
             catch (Exception err)
@@ -102,7 +109,7 @@ namespace KoshiSolvers
 
         private void handlePrintSolversOption()
         {
-            foreach (Solver solver in farm.Solvers)
+            foreach (Solver solver in Farm.Solvers)
             {
                 Console.WriteLine(solver.ToString());
             }
@@ -126,7 +133,7 @@ namespace KoshiSolvers
 
                 Console.Write("Enter h: ");
                 double h = Convert.ToDouble(Console.ReadLine());
-                farm.Solvers[farm.FindSolverByName(Name)].SolveKoshiTask(new TaskKoshi(y0, t0, t, h));
+                Farm.Solvers[Farm.FindSolverByName(Name)].SolveKoshiTask(new TaskKoshi(y0, t0, t, h));
             }
             catch (Exception err)
             {
@@ -142,7 +149,7 @@ namespace KoshiSolvers
                 byte index = Convert.ToByte(Console.ReadLine());
                 int i = 0;
 
-                foreach (Point point in farm.Solvers[index - 1].Solution)
+                foreach (Point point in Farm.Solvers[index - 1].Solution)
                 {
                     Console.WriteLine($"x{i}: {point.X}, y{i}: {point.Y}");
                     i++;
