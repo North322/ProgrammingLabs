@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace KoshiSolvers
 {
-    class FarmSolvers
+    public class FarmSolvers
     {
         // Constructors
         public FarmSolvers() {
