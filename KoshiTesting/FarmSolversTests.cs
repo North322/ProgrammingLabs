@@ -64,12 +64,12 @@ namespace KoshiSolvers.Tests
         }
 
         [TestMethod()]
-        public void SolveProblemTest()
+        public void SolveTaskTest()
         {
             GenerateTestName();
             
             TaskKoshi Task = new TaskKoshi(1.0, 1.0, 1.0, 1.0);
-            anInstance.SolveProblem(Task);
+            anInstance.SolveTask(Task);
         }
 
         [TestMethod()]
@@ -93,8 +93,8 @@ namespace KoshiSolvers.Tests
         }
 
         [TestMethod()]
-        [ExpectedException(typeof(ArgumentException),
-            "Solver with this name already exists")]
+        [ExpectedException(typeof(ApplicationException),
+            "There is already such solver")]
         public void CheckNameRepeatTest()
         {
             var Name = "Repiting name";
