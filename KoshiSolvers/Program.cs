@@ -10,7 +10,7 @@ namespace KoshiSolvers
         {
             System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-US");
             Menu menu = new Menu();
-            menu.listen();
+            menu.Listen();
         }
     }
 }

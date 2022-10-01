@@ -2,8 +2,10 @@
 {
     class EulerSolver: Solver
     {
+        // Constructors
         public EulerSolver(string _Name, BehaviorOfSolver _Behaviour) : base(_Name ,_Behaviour) { }
         
+        // Methods
         public override void SolveKoshiTask(TaskKoshi Task)
         {
             double FunctionValue;

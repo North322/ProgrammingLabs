@@ -2,8 +2,10 @@
 {
     public class HoinSolver : Solver
     {
+        // Constructors
         public HoinSolver(string _Name, BehaviorOfSolver _Behaviour) : base(_Name, _Behaviour) { }
 
+        // Methods
         public override void SolveKoshiTask(TaskKoshi Task)
         {
             double StepSize = Task.H;

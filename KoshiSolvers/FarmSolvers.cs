@@ -5,14 +5,14 @@ namespace KoshiSolvers
 {
     public class FarmSolvers
     {
+        // Properties
+        public List<Solver> Solvers { get; set; }
+        
         // Constructors
         public FarmSolvers() {
            Solvers = new List<Solver>(); 
         }
-
-        public List<Solver> Solvers { get; set; }
-        
-
+       
         // Methods
         public void AddSolver(Solver solver)
         {
@@ -33,34 +33,29 @@ namespace KoshiSolvers
             throw new ArgumentException("There is no such solver");
         }
 
-        public void SolveProblem(TaskKoshi Task)
+        public void SolveTask(TaskKoshi Task)
         {
             foreach (Solver solver in Solvers)
                 solver.SolveKoshiTask(Task);
         }
 
         public void DeleteSolver(string Name)
-        {
-            foreach (Solver solver in Solvers)
-            {
-                if (solver.Name == Name)
-                {
-                    Solvers.Remove(solver);
-                    return;
-                }
-            }
-
-            throw new ArgumentException("There is no such solver");
+        { 
+            Solvers.Remove(Solvers[this.FindSolverByName(Name)]);
+            return;
         }
 
         public void CheckNameRepeat(string Name)
         {
-            foreach (Solver solver in Solvers)
+            try 
             {
-                if (solver.Name == Name)
-                {
-                    throw new ArgumentException("Solver with this name already exists");
-                }
+                // If not found exception will be rised
+                this.FindSolverByName(Name);
+                throw new ApplicationException("There is already such solver");
+            }
+
+            catch(ArgumentException) {
+                return; 
             }
         }
     }
