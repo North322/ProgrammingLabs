@@ -5,19 +5,12 @@ namespace KoshiSolvers
 {
     public abstract class Solver
     {
+        // Class fields 
         private BehaviorOfSolver behaviour;
         private string name;
         private List<Point> solution;
-
-        public abstract void SolveKoshiTask(TaskKoshi Task);
-
-        public Solver(string _Name, BehaviorOfSolver _Behaviour)
-        {
-            Behavior = _Behaviour;
-            Name = _Name;
-            Solution = new List<Point>();
-        }
-
+    
+        // Properties
         public List<Point> Solution
         {
             get { return solution; }
@@ -45,5 +38,16 @@ namespace KoshiSolvers
                 behaviour = value;
             }
         }
+        
+        // Constructors
+        public Solver(string _Name, BehaviorOfSolver _Behaviour)
+        {
+            
+            Behavior = _Behaviour;
+            Name = _Name;
+            Solution = new List<Point>();
+        } 
+        // Methods
+        public abstract void SolveKoshiTask(TaskKoshi Task);
     }
 }

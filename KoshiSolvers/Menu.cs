@@ -3,18 +3,36 @@ using System;
 namespace KoshiSolvers
 {
     class Menu
-    {
-        public void listen()
+    { 
+        // Class fields
+        private const byte ADD_SOLVER_OPTION = 1;
+        private const byte DELETE_SOLVER_OPTION = 2;
+        private const byte PRINT_SOLVERS_OPTION = 3;
+        private const byte SOLVE_TASK_OPTION = 4;
+        private const byte PRINT_SOLUTION_OPTION = 5;
+        private const byte EXIT_OPTION = 6;
+        
+        // Properties
+        public FarmSolvers Farm { get; set; }
+        
+        // Constructors
+        public Menu()
+        {
+            Farm = new FarmSolvers();
+        }
+        
+        // Methods
+        public void Listen()
         {
             while (true)
             {
-                Console.Write($"\n\tMenu options\n" +
-                        $"{ADD_SOLVER_OPTION}-Add solver\n" +
-                        $"{DELETE_SOLVER_OPTION}-Delete solver\n" +
-                        $"{PRINT_SOLVERS_OPTION}-Print solvers\n" +
-                        $"{SOLVE_TASK_OPTION}-Solve task\n" +
-                        $"{PRINT_SOLUTION_OPTION}-Print solution\n" +
-                        $"{EXIT_OPTION}-EXIT\n\n");
+                Console.Write($@"\n\tMenu options\n
+                        {ADD_SOLVER_OPTION}-Add solver\n
+                        {DELETE_SOLVER_OPTION}-Delete solver\n
+                        {PRINT_SOLVERS_OPTION}-Print solvers\n
+                        {SOLVE_TASK_OPTION}-Solve task\n
+                        {PRINT_SOLUTION_OPTION}-Print solution\n
+                        {EXIT_OPTION}-EXIT\n\n");
 
                 Console.Write("Enter option: ");
                 byte option = Convert.ToByte(Console.ReadLine());
@@ -22,19 +40,19 @@ namespace KoshiSolvers
                 switch (option)
                 {
                     case 1:
-                        handleAddSolverOption();
+                        HandleAddSolverOption();
                         break;
                     case 2:
-                        handleDeleteSolverOption();
+                        HandleDeleteSolverOption();
                         break;
                     case 3:
-                        handlePrintSolversOption();
+                        HandlePrintSolversOption();
                         break;
                     case 4:
-                        handleSolveTaskOption();
+                        HandleSolveTaskOption();
                         break;
                     case 5:
-                        handlePrintSolution();
+                        HandlePrintSolution();
                         break;
                     case 6:
                         return;
@@ -44,22 +62,8 @@ namespace KoshiSolvers
                 }
             }
         }
-
-        public FarmSolvers Farm { get; set; }
-
-        const byte ADD_SOLVER_OPTION = 1;
-        const byte DELETE_SOLVER_OPTION = 2;
-        const byte PRINT_SOLVERS_OPTION = 3;
-        const byte SOLVE_TASK_OPTION = 4;
-        const byte PRINT_SOLUTION_OPTION = 5;
-        const byte EXIT_OPTION = 6;
-
-        public Menu()
-        {
-            Farm = new FarmSolvers();
-        }
-
-        private void handleAddSolverOption()
+        
+        private void HandleAddSolverOption()
         {
             try
             {
@@ -86,13 +90,13 @@ namespace KoshiSolvers
                 }
                 Console.WriteLine("Solver was successfully added!");
             }
-            catch (Exception err)
+            catch (Exception error)
             {
-                Console.WriteLine(err.Message);
+                Console.WriteLine(error.Message);
             }
         }
 
-        private void handleDeleteSolverOption()
+        private void HandleDeleteSolverOption()
         {
             try
             {
@@ -101,13 +105,13 @@ namespace KoshiSolvers
                 Farm.DeleteSolver(Name);
                 Console.WriteLine("Solver was successfully deleted");
             }
-            catch (Exception err)
+            catch (Exception error)
             {
-                Console.WriteLine(err.Message);
+                Console.WriteLine(error.Message);
             }
         }
 
-        private void handlePrintSolversOption()
+        private void HandlePrintSolversOption()
         {
             foreach (Solver solver in Farm.Solvers)
             {
@@ -116,7 +120,7 @@ namespace KoshiSolvers
             }
         }
 
-        private void handleSolveTaskOption()
+        private void HandleSolveTaskOption()
         {
             try
             {
@@ -128,50 +132,41 @@ namespace KoshiSolvers
 
                 Console.Write("Enter t: ");
                 double t = Convert.ToDouble(Console.ReadLine());
+                
 
                 Console.Write("Enter h: ");
                 double h = Convert.ToDouble(Console.ReadLine());
                 
                 TaskKoshi task = new TaskKoshi(y0, t0, t, h);
                 
-                foreach(Solver solver in Farm.Solvers) {
-                    solver.SolveKoshiTask(task);
-                } 
+                Farm.SolveTask(task);
             }
-            catch (Exception err)
+            catch (Exception error)
             {
-                Console.WriteLine(err.Message);
+                Console.WriteLine(error.Message);
             }
         }
 
-        private void handlePrintSolution()
+        private void HandlePrintSolution()
         {
             try
             {
                 Console.Write("Enter solver name: ");
                 string name = Console.ReadLine();
-                int i = 0;
+                int i = 0, index = Farm.FindSolverByName(name);
 
-                foreach (Solver solver in Farm.Solvers)
+                if (Farm.Solvers[index].Solution.Count == 0)
+                    throw new ArgumentException("This solver doesn't have a solution yet!");
+
+                foreach (Point point in Farm.Solvers[index].Solution)
                 {
-                    if (solver.Name == name)
-                    {
-                        if (solver.Solution.Count == 0)
-                            throw new ArgumentException("This solver doesn't have a solution yet!");
-
-                        foreach (Point point in solver.Solution)
-                        {
-                            Console.WriteLine($"x{i}: {point.X}, y{i}: {point.Y}");
-                            i++;
-                        }
-                        return;
-                    }
+                    Console.WriteLine($"x{i}: {point.X}, y{i}: {point.Y}");
+                    i++;
                 }
-                throw new ArgumentException("There is no such solver!");
             }
-            catch (Exception err)
+            catch (Exception error)
             {
-                Console.WriteLine(err.Message);
+                Console.WriteLine(error.Message);
             }
         }
     }
