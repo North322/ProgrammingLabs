@@ -1,6 +1,6 @@
 ﻿namespace KoshiSolvers
 {
-    class EulerSolver: Solver
+    public class EulerSolver: Solver
     {
         // Constructors
         public EulerSolver(string _Name, BehaviorOfSolver _Behaviour) : base(_Name ,_Behaviour) { }

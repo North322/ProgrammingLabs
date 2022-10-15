@@ -26,13 +26,16 @@ namespace KoshiSolvers
         {
             while (true)
             {
-                Console.Write($@"\n\tMenu options\n
-                        {ADD_SOLVER_OPTION}-Add solver\n
-                        {DELETE_SOLVER_OPTION}-Delete solver\n
-                        {PRINT_SOLVERS_OPTION}-Print solvers\n
-                        {SOLVE_TASK_OPTION}-Solve task\n
-                        {PRINT_SOLUTION_OPTION}-Print solution\n
-                        {EXIT_OPTION}-EXIT\n\n");
+                Console.Write($@"
+                                        Menu options 
+                        {ADD_SOLVER_OPTION}-Add solver
+                        {DELETE_SOLVER_OPTION}-Delete solver
+                        {PRINT_SOLVERS_OPTION}-Print solvers
+                        {SOLVE_TASK_OPTION}-Solve task
+                        {PRINT_SOLUTION_OPTION}-Print solution
+                        {EXIT_OPTION}-EXIT
+
+");
 
                 Console.Write("Enter option: ");
                 byte option = Convert.ToByte(Console.ReadLine());

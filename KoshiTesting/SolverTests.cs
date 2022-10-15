@@ -22,14 +22,12 @@ namespace KoshiSolvers.Tests
         [TestMethod()]
         private SolverTestMethod SolverTest()
         {
-            var anInstance = new FarmSolvers();
             var Name = "Test name";
             BehaviorOfSolver Behavior = (BehaviorOfSolver)Convert.ToByte(1);
             SolverTestMethod solver = new SolverTestMethod(Name, Behavior);
 
-            anInstance.Solvers.Add(solver);
+            new FarmSolvers().Solvers.Add(solver);
             return solver;
-
         }
 
         [TestMethod()]
@@ -37,12 +35,10 @@ namespace KoshiSolvers.Tests
             "SolverName shouldn't be empty, null, or white space!")]
         public void Name_ThrowExceptionTest()
         {
-            var anInstance = new FarmSolvers();
             var Name = "";
             BehaviorOfSolver Behavior = (BehaviorOfSolver)Convert.ToByte(1);
             SolverTestMethod solver = new SolverTestMethod(Name, Behavior);
-
-            anInstance.Solvers.Add(solver);
+            new FarmSolvers().Solvers.Add(solver);
         }
 
         [TestMethod()]
