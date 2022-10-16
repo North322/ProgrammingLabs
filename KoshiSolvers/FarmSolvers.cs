@@ -35,6 +35,7 @@ namespace KoshiSolvers
 
         public void SolveTask(TaskKoshi Task)
         {
+            if (Solvers.Count == 0) throw new ApplicationException("There is no solvers yet!");
             foreach (Solver solver in Solvers)
                 solver.SolveKoshiTask(Task);
         }
