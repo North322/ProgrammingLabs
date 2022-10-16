@@ -9,7 +9,7 @@
         public override void SolveKoshiTask(TaskKoshi Task)
         {
             double StepSize = Task.H;
-            double YIntermedied, FunctionIntermediedValue, FunctionValue;
+            double YIntermediate, FunctionIntermediateValue, FunctionValue;
             int i = 1;
 
             Solution.Clear();   
@@ -19,9 +19,9 @@
             while (Solution[i - 1].X < Task.T)
             {
                 double temp = Solution[i - 1].X + StepSize;
-                YIntermedied = Solution[i - 1].Y + StepSize * FunctionValue;
-                FunctionIntermediedValue = Task.CountFunctionValue(temp, YIntermedied);
-                Solution.Add(new Point(temp, Solution[i - 1].Y + StepSize / 2 * (FunctionValue + FunctionIntermediedValue)));
+                YIntermediate = Solution[i - 1].Y + StepSize * FunctionValue;
+                FunctionIntermediateValue = Task.CountFunctionValue(temp, YIntermediate);
+                Solution.Add(new Point(temp, Solution[i - 1].Y + StepSize / 2 * (FunctionValue + FunctionIntermediateValue)));
 
                 FunctionValue = Task.CountFunctionValue(Solution[i].X, Solution[i].Y);
 
@@ -34,15 +34,15 @@
 
                             StepSize = Task.T - (StepSize * i + Solution[0].X);
                             temp = Solution[i].X + StepSize;
-                            YIntermedied = Solution[i].Y + StepSize * FunctionValue;
-                            FunctionIntermediedValue = Task.CountFunctionValue(temp, YIntermedied);
-                            Solution.Add(new Point(temp, Solution[i].Y + StepSize / 2 * (FunctionValue + FunctionIntermediedValue)));
+                            YIntermediate = Solution[i].Y + StepSize * FunctionValue;
+                            FunctionIntermediateValue = Task.CountFunctionValue(temp, YIntermediate);
+                            Solution.Add(new Point(temp, Solution[i].Y + StepSize / 2 * (FunctionValue + FunctionIntermediateValue)));
                             break;
                         case BehaviorOfSolver.FinishAfterLeftBorder:
                             temp = Solution[i].X + StepSize;
-                            YIntermedied = Solution[i].Y + StepSize * FunctionValue;
-                            FunctionIntermediedValue = Task.CountFunctionValue(temp, YIntermedied);
-                            Solution.Add(new Point(temp, Solution[i].Y + StepSize / 2 * (FunctionValue + FunctionIntermediedValue)));
+                            YIntermediate = Solution[i].Y + StepSize * FunctionValue;
+                            FunctionIntermediateValue = Task.CountFunctionValue(temp, YIntermediate);
+                            Solution.Add(new Point(temp, Solution[i].Y + StepSize / 2 * (FunctionValue + FunctionIntermediateValue)));
                             break;
                         case BehaviorOfSolver.FinishBeforeLeftBorder:
                             break;
