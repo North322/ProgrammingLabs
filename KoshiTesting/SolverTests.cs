@@ -19,14 +19,12 @@ namespace KoshiSolvers.Tests
     [TestClass()]
     public class SolverTests
     {
-        [TestMethod()]
         private SolverTestMethod SolverTest()
         {
             var Name = "Test name";
             BehaviorOfSolver Behavior = (BehaviorOfSolver)Convert.ToByte(1);
             SolverTestMethod solver = new SolverTestMethod(Name, Behavior);
 
-            new FarmSolvers().Solvers.Add(solver);
             return solver;
         }
 
@@ -38,7 +36,6 @@ namespace KoshiSolvers.Tests
             var Name = "";
             BehaviorOfSolver Behavior = (BehaviorOfSolver)Convert.ToByte(1);
             SolverTestMethod solver = new SolverTestMethod(Name, Behavior);
-            new FarmSolvers().Solvers.Add(solver);
         }
 
         [TestMethod()]
@@ -46,7 +43,7 @@ namespace KoshiSolvers.Tests
         {
             var solver = SolverTest();
 
-            TaskKoshi Task = new TaskKoshi(1.0, 1.0, 1.0, 1.0);
+            TaskKoshi Task = new TaskKoshi(1.0, 1.0, 1.1, 1.0);
 
             solver.SolveKoshiTask(Task);
         }

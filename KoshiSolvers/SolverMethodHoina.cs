@@ -19,7 +19,7 @@
             while (Solution[i - 1].X <= Task.T)
             {
                 YIntermedied = Solution[i - 1].Y + StepSize * FunctionValue;
-                FunctionIntermediedValue = Task.CountFunctionValue(Solution[i].X, YIntermedied);
+                FunctionIntermediedValue = Task.CountFunctionValue(Solution[i - 1].X, YIntermedied);
                 Solution.Add(new Point(Solution[i - 1].X + StepSize, Solution[i - 1].Y + StepSize / 2 * (FunctionValue + FunctionIntermediedValue)));
 
                 FunctionValue = Task.CountFunctionValue(Solution[i].X, Solution[i].Y);

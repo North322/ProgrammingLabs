@@ -26,16 +26,18 @@ namespace KoshiSolvers
         {
             while (true)
             {
-                Console.Write($@"Menu options 
-                        {ADD_SOLVER_OPTION}-Add solver
-                        {DELETE_SOLVER_OPTION}-Delete solver
-                        {PRINT_SOLVERS_OPTION}-Print solvers
-                        {SOLVE_TASK_OPTION}-Solve task
-                        {PRINT_SOLUTION_OPTION}-Print solution
-                        {EXIT_OPTION}-EXIT");
+                Console.Write($@"
+Menu options
+{ADD_SOLVER_OPTION}-Add solver
+{DELETE_SOLVER_OPTION}-Delete solver
+{PRINT_SOLVERS_OPTION}-Print solvers
+{SOLVE_TASK_OPTION}-Solve task
+{PRINT_SOLUTION_OPTION}-Print solution
+{EXIT_OPTION}-EXIT");
 
-                Console.Write("Enter option: ");
-                byte option = Convert.ToByte(Console.ReadLine());
+                Console.Write("\n\nEnter option: ");
+                byte option;
+                byte.TryParse(Console.ReadLine(), out option) ;
 
                 switch (option)
                 {
@@ -67,7 +69,7 @@ namespace KoshiSolvers
         {
             try
             {
-                Console.Write("Enter solver type: ");
+                Console.Write("Enter solver type (1 - Euler Method, 2 - Hoin Method): ");
                 SolverTypes Type = (SolverTypes)Convert.ToByte(Console.ReadLine());
 
                 Console.Write("Enter solver name: ");
@@ -113,10 +115,14 @@ namespace KoshiSolvers
 
         private void HandlePrintSolversOption()
         {
+            if (Farm.Solvers.Count == 0)
+            {
+                Console.WriteLine("There are no such solvers yet");
+                return;
+            }
             foreach (Solver solver in Farm.Solvers)
             {
-                Console.WriteLine($@"Solver name: {solver.Name}\n
-                                Solver behavior: {solver.Behavior}");
+                Console.WriteLine($"Solver name: {solver.Name}\nSolver behavior: {solver.Behavior}\n");
             }
         }
 
@@ -140,6 +146,8 @@ namespace KoshiSolvers
                 TaskKoshi task = new TaskKoshi(y0, t0, t, h);
                 
                 Farm.SolveTask(task);
+
+                Console.Write("The task was successfully completed!");
             }
             catch (Exception error)
             {

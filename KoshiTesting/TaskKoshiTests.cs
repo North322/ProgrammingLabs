@@ -24,8 +24,9 @@ namespace KoshiSolvers.Tests
             "Right border must be greater than left one")]
         public void TaskKoshiInitBorder_ThrowExceptionTest()
         {
-            double t = 1; 
-            double t0 = t-1;
+            double t0 = 1;
+            double t = t0;
+
             TaskKoshi test = new TaskKoshi(1, t0, t, 2);
         }
 

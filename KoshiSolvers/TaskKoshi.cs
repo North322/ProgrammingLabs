@@ -18,7 +18,7 @@ namespace KoshiSolvers
             get { return t; }
             set
             {
-                if (value >= T0)
+                if (value <= T0)
                     throw new ArgumentException("Right border must be greater than left one");
                 t = value;
             }
@@ -39,8 +39,8 @@ namespace KoshiSolvers
         {
             Y0 = _Y0;
             T0 = _T0;
-            t = _T;
-            h = _H;
+            T = _T;
+            H = _H;
         }
         
         // Methods

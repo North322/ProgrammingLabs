@@ -39,8 +39,8 @@ namespace KoshiSolvers.Tests
 
             _anInstance.AddSolver(testSolver);
 
-            Assert.AreEqual(Name, Name, "Solver changes name");
-            Assert.AreEqual(Behavior, Behavior, "Solver changes name");
+            Assert.AreEqual(testSolver.Name, Name, "Solver changes name");
+            Assert.AreEqual(testSolver.Behavior, Behavior, "Solver changes name");
         }
 
         [TestMethod()]
@@ -50,7 +50,6 @@ namespace KoshiSolvers.Tests
         {
             var NonExistentName = "non-existent name";
             _anInstance.FindSolverByName(NonExistentName);
-            Assert.Fail();
         }
 
         [TestMethod()]
@@ -68,7 +67,7 @@ namespace KoshiSolvers.Tests
         {
             GenerateTestName();
             
-            TaskKoshi Task = new TaskKoshi(1.0, 1.0, 1.0, 1.0);
+            TaskKoshi Task = new TaskKoshi(1.0, 1.0, 1.1, 1.0);
             _anInstance.SolveTask(Task);
         }
 
@@ -82,6 +81,8 @@ namespace KoshiSolvers.Tests
         }
 
         [TestMethod()]
+        [ExpectedException(typeof(ArgumentException),
+            "There is no such solver")]
         public void DeleteSolverTest()
         {
             var ExistentName = "test_name";
@@ -89,7 +90,7 @@ namespace KoshiSolvers.Tests
 
             _anInstance.DeleteSolver(ExistentName);
 
-
+            _anInstance.FindSolverByName(ExistentName);
         }
 
         [TestMethod()]
@@ -98,7 +99,7 @@ namespace KoshiSolvers.Tests
         public void CheckNameRepeatTest()
         {
             var Name = "Repiting name";
-            BehaviorOfSolver Behavior = (BehaviorOfSolver)Convert.ToByte(1);
+            BehaviorOfSolver Behavior = (BehaviorOfSolver)(1);
 
             _anInstance.Solvers.Add(new TestSolver(Name, Behavior));
             _anInstance.CheckNameRepeat(Name);
