@@ -26,16 +26,13 @@ namespace KoshiSolvers
         {
             while (true)
             {
-                Console.Write($@"
-                                        Menu options 
+                Console.Write($@"Menu options 
                         {ADD_SOLVER_OPTION}-Add solver
                         {DELETE_SOLVER_OPTION}-Delete solver
                         {PRINT_SOLVERS_OPTION}-Print solvers
                         {SOLVE_TASK_OPTION}-Solve task
                         {PRINT_SOLUTION_OPTION}-Print solution
-                        {EXIT_OPTION}-EXIT
-
-");
+                        {EXIT_OPTION}-EXIT");
 
                 Console.Write("Enter option: ");
                 byte option = Convert.ToByte(Console.ReadLine());
@@ -118,8 +115,8 @@ namespace KoshiSolvers
         {
             foreach (Solver solver in Farm.Solvers)
             {
-                Console.WriteLine($"Solver name: {solver.Name}\n" +
-                                $"Solver behavior: {solver.Behavior}");
+                Console.WriteLine($@"Solver name: {solver.Name}\n
+                                Solver behavior: {solver.Behavior}");
             }
         }
 
