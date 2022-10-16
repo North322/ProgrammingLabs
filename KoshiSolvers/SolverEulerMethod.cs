@@ -17,7 +17,7 @@
             Solution.Add(new Point(Task.T0, Task.Y0));
             FunctionValue = Task.CountFunctionValue(Solution[0].X, Solution[0].Y);
 
-            while (Solution[i - 1].X <= Task.T)
+            while (Solution[i - 1].X < Task.T)
             {
                 Solution.Add(new Point(Solution[i - 1].X + StepSize, Solution[i - 1].Y + StepSize * FunctionValue));
                 FunctionValue = Task.CountFunctionValue(Solution[i].X, Solution[i].Y);
