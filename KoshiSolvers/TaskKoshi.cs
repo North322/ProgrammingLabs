@@ -28,7 +28,7 @@ namespace KoshiSolvers
             get { return h; }
             set
             {
-                if (h <= 0)
+                if (value <= 0)
                     throw new ArgumentException("Step can't have zero or negative value");
                 h = value;
             }

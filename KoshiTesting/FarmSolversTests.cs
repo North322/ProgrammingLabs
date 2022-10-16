@@ -20,14 +20,14 @@ namespace KoshiSolvers.Tests
     [TestClass()]
     public class FarmSolversTests
     {
-        private FarmSolvers anInstance = new FarmSolvers();
+        private FarmSolvers _anInstance = new FarmSolvers();
 
         public void GenerateTestName(string Name="Default")
         {
             BehaviorOfSolver Behavior = (BehaviorOfSolver)Convert.ToByte(1);
             Solver testSolver = new TestSolver(Name, Behavior);
 
-            anInstance.Solvers.Add(testSolver);
+            _anInstance.Solvers.Add(testSolver);
         }
 
         [TestMethod()]
@@ -37,7 +37,7 @@ namespace KoshiSolvers.Tests
             BehaviorOfSolver Behavior = (BehaviorOfSolver)Convert.ToByte(1);
             Solver testSolver = new TestSolver(Name, Behavior);
 
-            anInstance.AddSolver(testSolver);
+            _anInstance.AddSolver(testSolver);
 
             Assert.AreEqual(Name, Name, "Solver changes name");
             Assert.AreEqual(Behavior, Behavior, "Solver changes name");
@@ -49,7 +49,7 @@ namespace KoshiSolvers.Tests
         public void FindSolverByName_ThrowExceptionTest()
         {
             var NonExistentName = "non-existent name";
-            anInstance.FindSolverByName(NonExistentName);
+            _anInstance.FindSolverByName(NonExistentName);
             Assert.Fail();
         }
 
@@ -58,9 +58,9 @@ namespace KoshiSolvers.Tests
         {
             var TestName = "test_name";
             GenerateTestName(TestName);
-            int index = anInstance.FindSolverByName(TestName); //returns an index, right?
+            int index = _anInstance.FindSolverByName(TestName); //returns an index, right?
 
-            Assert.AreEqual(anInstance.Solvers[index].Name, TestName);
+            Assert.AreEqual(_anInstance.Solvers[index].Name, TestName);
         }
 
         [TestMethod()]
@@ -69,7 +69,7 @@ namespace KoshiSolvers.Tests
             GenerateTestName();
             
             TaskKoshi Task = new TaskKoshi(1.0, 1.0, 1.0, 1.0);
-            anInstance.SolveTask(Task);
+            _anInstance.SolveTask(Task);
         }
 
         [TestMethod()]
@@ -78,7 +78,7 @@ namespace KoshiSolvers.Tests
         public void DeleteSolver_ThrowExceptionTest()
         {
             var NonExistentName = "non-existent name";
-            anInstance.DeleteSolver(NonExistentName);
+            _anInstance.DeleteSolver(NonExistentName);
         }
 
         [TestMethod()]
@@ -87,7 +87,7 @@ namespace KoshiSolvers.Tests
             var ExistentName = "test_name";
             GenerateTestName(ExistentName);
 
-            anInstance.DeleteSolver(ExistentName);
+            _anInstance.DeleteSolver(ExistentName);
 
 
         }
@@ -100,8 +100,8 @@ namespace KoshiSolvers.Tests
             var Name = "Repiting name";
             BehaviorOfSolver Behavior = (BehaviorOfSolver)Convert.ToByte(1);
 
-            anInstance.Solvers.Add(new TestSolver(Name, Behavior));
-            anInstance.CheckNameRepeat(Name);
+            _anInstance.Solvers.Add(new TestSolver(Name, Behavior));
+            _anInstance.CheckNameRepeat(Name);
         }
     }
 }
