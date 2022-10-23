@@ -1,5 +1,5 @@
 using System;
-
+using System.Collections.Generic;
 namespace KoshiSolvers
 {
     class Menu
@@ -13,12 +13,14 @@ namespace KoshiSolvers
         private const byte EXIT_OPTION = 6;
         
         // Properties
-        public FarmSolvers Farm { get; set; }
+        public Farm Farm { get; }
+        public List<List<Point>> Solutions { get; set; }
         
         // Constructors
         public Menu()
         {
-            Farm = new FarmSolvers();
+            Farm = new Farm();
+            Solutions = new List<List<Point>>();
         }
         
         // Methods
@@ -26,14 +28,16 @@ namespace KoshiSolvers
         {
             while (true)
             {
-                Console.Write($@"
-Menu options
-{ADD_SOLVER_OPTION}-Add solver
-{DELETE_SOLVER_OPTION}-Delete solver
-{PRINT_SOLVERS_OPTION}-Print solvers
-{SOLVE_TASK_OPTION}-Solve task
-{PRINT_SOLUTION_OPTION}-Print solution
-{EXIT_OPTION}-EXIT");
+                Console.Write(
+                        $@"
+                        Menu options
+                        {ADD_SOLVER_OPTION}-Add solver
+                        {DELETE_SOLVER_OPTION}-Delete solver
+                        {PRINT_SOLVERS_OPTION}-Print solvers
+                        {SOLVE_TASK_OPTION}-Solve task
+                        {PRINT_SOLUTION_OPTION}-Print solution
+                        {EXIT_OPTION}-EXIT"
+                        );
 
                 Console.Write("\n\nEnter option: ");
                 byte option;
@@ -74,7 +78,6 @@ Menu options
 
                 Console.Write("Enter solver name: ");
                 string Name = Console.ReadLine();
-                Farm.CheckNameRepeat(Name);
 
                 Console.Write("Enter solver behavior(1 - Stop at left border, 2 - after left border, 3 - before left border): ");
                 BehaviorOfSolver Behavior = (BehaviorOfSolver)Convert.ToByte(Console.ReadLine());
@@ -139,11 +142,10 @@ Menu options
                 Console.Write("Enter t: ");
                 double t = Convert.ToDouble(Console.ReadLine());
                 
-
                 Console.Write("Enter h: ");
                 double h = Convert.ToDouble(Console.ReadLine());
                 
-                TaskKoshi task = new TaskKoshi(y0, t0, t, h);
+                InitialValueProblem task = new InitialValueProblem(y0, t0, t, h);
                 
                 Farm.SolveTask(task);
 
@@ -163,10 +165,10 @@ Menu options
                 string name = Console.ReadLine();
                 int i = 0, index = Farm.FindSolverByName(name);
 
-                if (Farm.Solvers[index].Solution.Count == 0)
+                if (Solutions[index].Count == 0)
                     throw new ArgumentException("This solver doesn't have a solution yet!");
 
-                foreach (Point point in Farm.Solvers[index].Solution)
+                foreach (Point point in Solutions[index]) 
                 {
                     Console.WriteLine($"x{i}: {point.X}, y{i}: {point.Y}");
                     i++;

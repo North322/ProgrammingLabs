@@ -3,20 +3,30 @@ using System.Collections.Generic;
 
 namespace KoshiSolvers
 {
-    public class FarmSolvers
+    public class Farm
     {
         // Properties
-        public List<Solver> Solvers { get; set; }
-        
+        public List<Solver> Solvers { get; }
+
         // Constructors
-        public FarmSolvers() {
-           Solvers = new List<Solver>(); 
+        public Farm()
+        {
+            Solvers = new List<Solver>();
         }
-       
+
         // Methods
         public void AddSolver(Solver solver)
         {
-            Solvers.Add(solver);
+            if (solver == null)
+                throw new NullReferenceException("Solver can't be null!");
+            try
+            {
+                this.FindSolverByName(solver.Name);
+            }
+            catch (ArgumentException)
+            {
+                Solvers.Add(solver);
+            }
         }
 
         public int FindSolverByName(string Name)
@@ -33,31 +43,21 @@ namespace KoshiSolvers
             throw new ArgumentException("There is no such solver");
         }
 
-        public void SolveTask(TaskKoshi Task)
+        public List<List<Point>> SolveTask(InitialValueProblem Task)
         {
+            List<List<Point>> Solutions = new List<List<Point>>();
             if (Solvers.Count == 0) throw new ApplicationException("There is no solvers yet!");
+
             foreach (Solver solver in Solvers)
-                solver.SolveKoshiTask(Task);
+                Solutions.Add(solver.Solve(Task));
+
+            return Solutions;
         }
 
         public void DeleteSolver(string Name)
-        { 
-            Solvers.Remove(Solvers[this.FindSolverByName(Name)]);
-            return;
-        }
-
-        public void CheckNameRepeat(string Name)
         {
-            try 
-            {
-                // If not found exception will be rised
-                this.FindSolverByName(Name);
-                throw new ApplicationException("There is already such solver");
-            }
-
-            catch(ArgumentException) {
-                return; 
-            }
+            Solvers.Remove(Solvers[this.FindSolverByName(Name)]);
         }
+
     }
 }

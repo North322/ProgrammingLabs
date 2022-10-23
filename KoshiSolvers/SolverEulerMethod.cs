@@ -1,4 +1,5 @@
-﻿namespace KoshiSolvers
+﻿using System.Collections.Generic;
+namespace KoshiSolvers
 {
     public class EulerSolver: Solver
     {
@@ -6,14 +7,12 @@
         public EulerSolver(string _Name, BehaviorOfSolver _Behaviour) : base(_Name ,_Behaviour) { }
         
         // Methods
-        public override void SolveKoshiTask(TaskKoshi Task)
+        public override List<Point> Solve(InitialValueProblem Task)
         {
-            double FunctionValue;
-            double StepSize = Task.H;
-
+            double FunctionValue, StepSize = Task.H;
             int i = 1;
+            List<Point> Solution = new List<Point>();
 
-            Solution.Clear();
             Solution.Add(new Point(Task.T0, Task.Y0));
             FunctionValue = Task.CountFunctionValue(Solution[0].X, Solution[0].Y);
 
@@ -41,9 +40,11 @@
                         case BehaviorOfSolver.FinishBeforeLeftBorder:
                             break;
                     }
+                    break;
                 }
                 i++;
             }
+            return Solution;
         }
     }    
 }

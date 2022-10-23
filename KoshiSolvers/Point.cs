@@ -3,8 +3,8 @@
     public class Point
     {
         // Properties
-        public double X { get; set; }
-        public double Y { get; set; }
+        public double X { get; }
+        public double Y { get; }
         
         // Constructors
         public Point(double _X, double _Y)
