@@ -1,6 +1,6 @@
 ﻿namespace KoshiSolvers
 {
-    public class Point
+    public struct Point
     {
         // Properties
         public double X { get; }
